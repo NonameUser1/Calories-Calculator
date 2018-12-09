@@ -1,0 +1,5 @@
+CHOCDF     - Carbs       - Вуглеводи
+ENERC_KCAL - Kilocaloria - Кілокалорії
+FAT        - Fat         - Жир
+FIBTG      - Fiber       - Харчові волокна
+PROCNT     - Protein     - Протеїн
