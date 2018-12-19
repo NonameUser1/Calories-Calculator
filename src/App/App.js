@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-// import Header from '../components/header.js';
-import FoodSearch from '../components/FoodSearch';
-import FoodInfo from '../components/FoodInfo';
+import Header from '../components/Header';
+import Router from '../components/Router';
 
+import './reset.scss';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <FoodSearch/>
-        <FoodInfo/>
+          <Header/>
+          <Router/>
       </div>
     );
   }

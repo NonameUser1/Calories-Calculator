@@ -7,27 +7,31 @@ import {searchFoodInfo} from '../../actions/action_searchFoodInfo';  // importin
 
 class FoodSearch extends Component{
     handleSub = () =>{
-        let input = this.refs.foodInput.value;
-
-        this.handleAPIQuery(input)
+        let input = this.inputCheck(this.refs.foodInput.value);
+        this.handleAPIQuery(input);
+    }
+    inputCheck = (input) =>{
+        const lettersOnly = /[^A-Za-z\s]/g;
+        const clear = input.split(' ')
+                           .map((item)=>{return item.replace(lettersOnly , '')})
+                           .join('%20');
+        return clear;
     }
     //need to check input
     handleAPIQuery = async (input) =>{  // make api request and push result to state
-
         const url = await fetch(`${API_URL}ingr=${input}&app_id=${MY_API_ID}&app_key=${MY_API_KEY}`);
         const data = await url.json();
         console.log('API request finished');
         const nutrients = data.parsed[0].food.nutrients;
         // console.log(nutrients);
-        this.props.searchFoodInfo(nutrients);
+        this.props.searchFoodInfo(nutrients); //passing data to store
     }
 
     render(){
         return(
-            <div>
-                <input ref="foodInput" type="text" pattern="[A-Za-z]"/>
-                <button onClick={this.handleSub}>subb</button>
-                <p id="res"></p>
+            <div className="cc-foodSearch">
+                <input className="cc-foodSearch__input" ref="foodInput" type="text"/>
+                <button className="cc-foodSearch__submit" onClick={this.handleSub}>subb</button>
             </div>
         );
     }

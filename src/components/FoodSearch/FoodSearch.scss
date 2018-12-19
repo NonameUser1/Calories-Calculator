@@ -1,0 +1,18 @@
+.cc-foodSearch{
+  display: flex;
+  height: 50px;
+  &__input{
+    padding: 10px 5px;
+    line-height: 15px;
+    //height: 20px;
+    width: 350px;
+
+    font-size: 22px;
+
+  }
+  &__submit{
+    height: 100%;
+    //line-height: 15px;
+    padding: 10px;
+  }
+}

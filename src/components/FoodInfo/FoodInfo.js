@@ -9,7 +9,7 @@ import {connect} from 'react-redux';
 class FoodInfo extends Component{
     returnFoodData = () =>{
         const {FAT, CHOCDF, ENERC_KCAL, FIBTG , PROCNT } = this.props.nutrients;
-        // console.log(this.props.nutrients);
+        // console.log(FAT);
         const fat    = FAT;
         const chocdf = CHOCDF;
         const kcal   = ENERC_KCAL;
@@ -26,11 +26,15 @@ class FoodInfo extends Component{
         );
     }
     render() {
+        // console.log(this.props.nutrients);
+        console.log('render FoodInfo');
+
         if(!this.props.nutrients){
             return <div>search your food</div>
         }
         return(
             <div>
+                {/*{this.props.nutrients}*/}
                 {this.returnFoodData()}
             </div>
         );
