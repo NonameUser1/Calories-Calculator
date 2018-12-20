@@ -3,11 +3,12 @@ import { withRouter } from 'react-router-dom';
 import FoodInfo from '../FoodInfo';
 import FoodSearch from '../FoodSearch';
 
+import './getnutrientsinfo.scss';
 
 class GetNutrientsInfo extends Component{
     render() {
         return(
-            <div>
+            <div className='cc-GetNutrientsInfo'>
                 <FoodSearch/>
                 <FoodInfo/>
             </div>

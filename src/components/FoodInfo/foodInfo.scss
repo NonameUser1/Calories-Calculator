@@ -1,0 +1,21 @@
+.cc-foodInfo{
+
+  grid-row: 3/4;
+  grid-column: 2/3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #6bb1d9;
+  &__list{
+
+  }
+  &__item{
+
+  }
+  &__label{
+    grid-row: 3/4;
+    grid-column: 2/3;
+    display: flex;
+    justify-self: center;
+  }
+}

@@ -1,14 +1,25 @@
 .cc-navigation{
   display: flex;
   flex-direction: row;
+
   &__list{
     display: flex;
     flex-direction: row;
+
   }
   &__item{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    padding: 5px 10px;
+    margin: 0px 5px;
+    //border: solid 1px #333;
+    //background-color: red;
 
   }
   &__link{
-
+    font-family: sans-serif, Arial;
+    letter-spacing: 1px;
+    font-size: 18px;
   }
 }

@@ -1,27 +1,28 @@
 import React, {Component} from 'react';
-import './FoodInfo.scss'
 import {connect} from 'react-redux';
 // import {bindActionCreators} from 'redux';
 // import {searchFoodInfo} from "../../actions/action_searchFoodInfo";
 
+import './foodInfo.scss';
 
 
 class FoodInfo extends Component{
     returnFoodData = () =>{
         const {FAT, CHOCDF, ENERC_KCAL, FIBTG , PROCNT } = this.props.nutrients;
         // console.log(FAT);
-        const fat    = FAT;
-        const chocdf = CHOCDF;
-        const kcal   = ENERC_KCAL;
-        const fibtg  = FIBTG;
-        const procnt = PROCNT;
+        const sorryNoData = 'Sorry no data found'
+        const fat    = FAT        ? FAT        : sorryNoData;
+        const chocdf = CHOCDF     ? CHOCDF     : sorryNoData;
+        const kcal   = ENERC_KCAL ? ENERC_KCAL : sorryNoData;
+        const fibtg  = FIBTG      ? FIBTG      : sorryNoData;
+        const procnt = PROCNT     ? PROCNT     : sorryNoData;
         return (
-            <ul>
-                <li><p>Жири - {fat}</p></li>
-                <li><p>Вуглеводи - {chocdf}</p></li>
-                <li><p>Кілокалорії - {kcal}</p></li>
-                <li><p>Харчові волокна - {fibtg}</p></li>
-                <li><p>Протеїн - {procnt}</p></li>
+            <ul className='cc-foodInfo__list'>
+                <li className='cc-foodInfo__item'><p>Жири - {fat}</p></li>
+                <li className='cc-foodInfo__item'><p>Вуглеводи - {chocdf}</p></li>
+                <li className='cc-foodInfo__item'><p>Кілокалорії - {kcal}</p></li>
+                <li className='cc-foodInfo__item'><p>Харчові волокна - {fibtg}</p></li>
+                <li className='cc-foodInfo__item'><p>Протеїн - {procnt}</p></li>
             </ul>
         );
     }
@@ -30,10 +31,10 @@ class FoodInfo extends Component{
         console.log('render FoodInfo');
 
         if(!this.props.nutrients){
-            return <div>search your food</div>
+            return <p className='cc-foodInfo__label'>search your food</p>
         }
         return(
-            <div>
+            <div className='cc-foodInfo'>
                 {/*{this.props.nutrients}*/}
                 {this.returnFoodData()}
             </div>
