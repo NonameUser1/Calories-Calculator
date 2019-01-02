@@ -135,20 +135,28 @@ a{
   box-sizing: border-box;
 }
 
-p, h2{
+p, h2 , h5{
   font-family: sans-serif, Arial;
 }
 
-main{
-  width: 100%;
-  height: 80%;
-  background-color: #444444;
-}
 #root{
   width: 100%;
   height: 100%;
 }
-.App{
+
+.app{
   width: 100%;
   height: 100%;
+  display: grid;
+  //grid-template-rows: 1fr 9fr;
 }
+
+main{
+  //width: 100%;
+  //height: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background-color: #444444;
+}
+

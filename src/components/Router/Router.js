@@ -3,7 +3,8 @@ import { Switch, Route } from 'react-router-dom';
 import GetNutrientsInfo from '../GetNutrientsInfo';
 import About from '../About';
 import Statistic from '../Statistic';
-import SignInForm from '../SignInForm';
+import LogInForm from '../Authorization/LogInForm';
+import SignUpForm from '../Authorization/SignUpForm';
 
 class Router extends Component{
 
@@ -14,7 +15,8 @@ class Router extends Component{
                     <Route path='/analyze'   component={GetNutrientsInfo}/>
                     <Route path='/statistic' component={Statistic}/>
                     <Route path='/about'     component={About}/>
-                    <Route path='/signIn'    component={SignInForm}/>
+                    <Route path='/logIn'    component={LogInForm}/>
+                    <Route path='/signUp'    component={SignUpForm}/>
                 </Switch>
             </main>
         )

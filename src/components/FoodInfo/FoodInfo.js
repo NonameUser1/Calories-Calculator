@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import Chart from 'react-google-charts';
 // import {bindActionCreators} from 'redux';
 // import {searchFoodInfo} from "../../actions/action_searchFoodInfo";
 
@@ -7,23 +8,101 @@ import './foodInfo.scss';
 
 
 class FoodInfo extends Component{
+
     returnFoodData = () =>{
-        const {FAT, CHOCDF, ENERC_KCAL, FIBTG , PROCNT } = this.props.nutrients;
-        // console.log(FAT);
-        const sorryNoData = 'Sorry no data found'
-        const fat    = FAT        ? FAT        : sorryNoData;
-        const chocdf = CHOCDF     ? CHOCDF     : sorryNoData;
-        const kcal   = ENERC_KCAL ? ENERC_KCAL : sorryNoData;
-        const fibtg  = FIBTG      ? FIBTG      : sorryNoData;
-        const procnt = PROCNT     ? PROCNT     : sorryNoData;
+
         return (
             <ul className='cc-foodInfo__list'>
-                <li className='cc-foodInfo__item'><p>Жири - {fat}</p></li>
-                <li className='cc-foodInfo__item'><p>Вуглеводи - {chocdf}</p></li>
-                <li className='cc-foodInfo__item'><p>Кілокалорії - {kcal}</p></li>
-                <li className='cc-foodInfo__item'><p>Харчові волокна - {fibtg}</p></li>
-                <li className='cc-foodInfo__item'><p>Протеїн - {procnt}</p></li>
+                <li className='cc-foodInfo__item'>
+                    <div className='flex-row'>
+                        <div className="cc-foodInfo__color-label color-label--green"></div>
+                        <p>Fat - </p>
+                    </div>
+                    <span>{this.props.nutrients.fat}</span>
+                </li>
+                <li className='cc-foodInfo__item'>
+                    <div className='flex-row'>
+                        <div className="cc-foodInfo__color-label color-label--red"></div>
+                        <p>Carbohydrates - </p>
+                    </div>
+                    <span>{this.props.nutrients.chocdf}</span>
+                </li>
+                <li className='cc-foodInfo__item'>
+                    <div className='flex-row'>
+                        <div className="cc-foodInfo__color-label color-label--blue"></div>
+                        <p>Kilocaloria - </p>
+                    </div>
+                    <span>{this.props.nutrients.kcal}</span>
+                </li>
+                <li className='cc-foodInfo__item'>
+                    <div className='flex-row'>
+                        <div className="cc-foodInfo__color-label color-label--yellow"></div>
+                        <p>Dietary fiber - </p>
+                    </div>
+                    <span>{this.props.nutrients.fibtg}</span>
+                </li>
+                <li className='cc-foodInfo__item'>
+                    <div className='flex-row'>
+                        <div className="cc-foodInfo__color-label color-label--purple"></div>
+                        <p>Protein - </p>
+                    </div>
+                    <span>{this.props.nutrients.procnt}</span>
+                </li>
             </ul>
+        );
+    }
+    returnChart = () =>{
+
+        const pieOptions = {
+            slices: [
+                {
+                    color: "#2BB673"
+                },
+                {
+                    color: "#d91e48"
+                },
+                {
+                    color: "#007fad"
+                },
+                {
+                    color: "#e9a227"
+                },
+                {
+                    color: "#B400E9"
+                }
+            ],
+            legend: {position: 'none'},
+            tooltip: {
+                showColorCode: false
+            },
+            chartArea: {
+                left: 0,
+                top: 0,
+                width: "100%",
+                height: "100%"
+            },
+            backgroundColor: "yellow" , /*"transparent"*/
+            border: "none",
+            fontName: "Roboto"
+        };
+
+        return(
+          <Chart
+              width='100%'
+              height= '100%'
+              chartType ='PieChart'
+              options={pieOptions}
+              data = {[
+                  ['Nutrients', 'Value per 100 gram'],
+                  ['Fat',           this.props.nutrients.fat    ],
+                  ['Carbohydrates', this.props.nutrients.chocdf ],
+                  ['Kilocaloria',   this.props.nutrients.kcal   ],
+                  ['Dietary fiber', this.props.nutrients.fibtg  ],
+                  ['Protein',       this.props.nutrients.procnt ]
+              ]}
+              loader={<div>Loading Chart</div>}
+
+          />
         );
     }
     render() {
@@ -37,6 +116,9 @@ class FoodInfo extends Component{
             <div className='cc-foodInfo'>
                 {/*{this.props.nutrients}*/}
                 {this.returnFoodData()}
+                <div className='cc-foodInfo__pie-chart'>
+                    {this.returnChart()}
+                </div>
             </div>
         );
     }

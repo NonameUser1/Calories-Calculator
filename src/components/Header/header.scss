@@ -1,8 +1,10 @@
 .cc-header{
   width: 100%;
-  height: 20%;
-  min-height: 50px;
-  max-height: 50px;
+  //height: 10%;
+  //min-height: 50px;
+  //max-height: 50px;
+  position: absolute;
+  height: 50px;
   background-image: linear-gradient(25deg, #31beff 15%,  #6bb1d9 28%, #7baac7 , #87a3b5 );
   box-shadow: 0 -1px 15px 1px #444;
   display: flex;

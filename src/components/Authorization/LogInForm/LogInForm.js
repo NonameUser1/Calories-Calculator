@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import '../forms.scss';
 
-import './signInForm.scss';
 
-class SignInForm extends Component{
+class LogInForm extends Component{
     state = {
         email:'' ,
         password:''
@@ -17,23 +17,23 @@ class SignInForm extends Component{
     }
     render() {
         return (
-            <div className='cc-signInForm'>
-                <form onSubmit={this.handleSubmit}>
-                    <h5>Sign In</h5>
+            <div className='cc-authForm'>
+                <form className='cc-authForm__form' onSubmit={this.handleSubmit}>
+                    <h5 className='cc-authForm__title'>Log In</h5>
                     <input type='email'
                            id='email'
                            placeholder='Email'
-                           className='cc-signInForm__input'
+                           className='cc-authForm__input'
                            onChange={this.handleInputChange}/>
                     <input type='password'
                            id='password'
                            placeholder='Password'
-                           className='cc-signInForm__input'
+                           className='cc-authForm__input'
                            onChange={this.handleInputChange} />
-                    <input type="submit"/>
+                    <input className='cc-authForm__input--submit-btn' type="submit" value='Log in'/>
                 </form>
             </div>
         );
     }
 }
-export default SignInForm;
+export default LogInForm;

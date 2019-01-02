@@ -10,12 +10,14 @@ import {createStore} from 'redux';          //function  createStore
 
 import allReducers from './reducers/reducer_rootReducer'; // importing all reducers for store
 
+import Firebase, {FirebaseContext} from './firebase';     // firebase instance?
+
 const store = createStore(allReducers);     // creating store
                                             //  pasing store as props
 ReactDOM.render(
     <BrowserRouter>
         <Provider store={store}>
-            <App/>
+                <App/>
         </Provider>
     </BrowserRouter>
 
