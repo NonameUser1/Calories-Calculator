@@ -10,19 +10,40 @@ import {createStore} from 'redux';          //function  createStore
 
 import allReducers from './reducers/reducer_rootReducer'; // importing all reducers for store
 
-import Firebase, {FirebaseContext} from './firebase';     // firebase instance?
+import firebase from './firebase';     // firebase instance?
 
-const store = createStore(allReducers);     // creating store
+const storE = createStore(allReducers,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());     // creating store
                                             //  pasing store as props
-ReactDOM.render(
-    <BrowserRouter>
-        <Provider store={store}>
-                <App/>
-        </Provider>
-    </BrowserRouter>
 
-    , document.getElementById('root')
-);
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+        console.log('user check: user in');
+         storE.dispatch({
+             type: 'ON_LOAD_USER_CHECK',
+             payload: {
+                 authorized: true
+             }
+         });
+    } else {
+        console.log('user check: user out');
+        storE.dispatch({
+            type: 'ON_LOAD_USER_CHECK',
+            payload: {
+                authorized: false,
+                currentUser: null
+            }
+        });
+    }
+    ReactDOM.render(
+        <BrowserRouter>
+            <Provider store={storE}>
+                <App/>
+            </Provider>
+        </BrowserRouter>
+
+        , document.getElementById('root')
+    );
+});
 
 
 serviceWorker.unregister();
