@@ -5,6 +5,7 @@ import {bindActionCreators} from 'redux';
 import {logIn} from "../../../actions/action_logIn";  // importing action creator
 
 import '../forms.scss';
+import {Link} from "react-router-dom";
 
 
 class LogInForm extends Component{
@@ -15,6 +16,7 @@ class LogInForm extends Component{
             password:''
         }
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.userDataToStore = this.userDataToStore.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -23,14 +25,25 @@ class LogInForm extends Component{
             [e.target.id] : e.target.value
         });
     }
+
+    userDataToStore(){
+        console.log('call method inside firebase obj');
+        // store.dispatch(signingUp(this.state));
+        this.props.login(this.state);
+    }
+
     handleSubmit(e){
         e.preventDefault();
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+            .then(()=>{
+                console.log('signIn successful');
+            })
             .catch(function(error) {
                 alert(error.code);
                 alert(error.message);
             });
     }
+
     render() {
         return (
             <div className='cc-authForm'>
@@ -47,6 +60,7 @@ class LogInForm extends Component{
                            className='cc-authForm__input'
                            onChange={this.handleInputChange} />
                     <input className='cc-authForm__input--submit-btn' type="submit" value='Log in'/>
+                    <Link className='cc-authForm__link' to='/signUp'>Dont have an account yet?</Link>
                 </form>
             </div>
         );

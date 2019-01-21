@@ -4,6 +4,7 @@
   display: flex;
   align-content: center;
   justify-content: center;
+  margin-top: 50px;
 
   &__form{
     display: flex;
@@ -40,5 +41,13 @@
           color: inherit;
         }
       }
+  }
+
+  &__link{
+    font-family: sans-serif, Arial;
+    //display: block;
+    margin-top: 15px;
+    height: 30px;
+    color: #7baac7;
   }
 }

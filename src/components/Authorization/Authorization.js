@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {logOut} from '../../actions/action_logOut';
@@ -14,13 +14,9 @@ class Authorization extends Component{
         super(props);
         console.log('Auth status -from store');
         console.log(this.props.auth);
-        // this.state = {
-        //     authorized :  this.props.auth.authorized,
-        //     currentUser: this.props.auth.currentUser
-        // };
+
         this.logOutUser = this.logOutUser.bind(this);
         this.userDataToStore = this.userDataToStore.bind(this);
-
     }
 
     userDataToStore = () =>{
@@ -28,19 +24,11 @@ class Authorization extends Component{
         this.props.logout();
     }
 
-    // componentWillMount() {
-    //
-    // }
-
 
     logOutUser(){
         firebase.auth().signOut().then(()=> {
             console.log('logout successful');
             this.userDataToStore.call(Authorization);
-            // this.setState({
-            //     authorized : false,
-            //     currentUser: null
-            // });
         }).catch(function(error) {
             alert(`${error.code}   ${error.message}`);
         });
@@ -53,19 +41,17 @@ class Authorization extends Component{
 
         console.log('running render');
 
-
-         console.log(`state :`);
-         console.log(this.state);
-
         return (
-            <div className="cc-header__authorization cc-authorization">
-                {  this.props.auth.authorized ?// this.state.authorized ?
+            <div className='cc-header__authorization cc-authorization'>
+                {  this.props.auth.authorized ?
 
-                        <button onClick={this.logOutUser}>Log out</button>
+                        <button className='cc-authorization__logOut' onClick={this.logOutUser}>Log out</button>
                     :
-                        <div>
-                           <Link className='cc-authorization__signUp' to='/signUp'>Sign up</Link>
-                           <Link className='cc-authorization__logIn' to='/logIn'>Log in</Link>
+
+                        <div className='cc-authorization__link-container'>
+                            <Redirect to='/signUp'/>
+                            <Link className='cc-authorization__link' to='/signUp'>Sign up</Link>
+                            <Link className='cc-authorization__link' to='/logIn'>Log in</Link>
                         </div>
 
                 }

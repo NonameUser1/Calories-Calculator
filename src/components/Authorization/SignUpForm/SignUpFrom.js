@@ -3,7 +3,7 @@ import firebase from '../../../firebase';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {signingUp} from "../../../actions/action_signingUp";  // importing action creator
-import {Redirect} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import '../forms.scss';
 
 class SignUpForm extends Component{
@@ -47,33 +47,34 @@ class SignUpForm extends Component{
 
     render() {
         return (
-            this.props.authorized ?
+            this.props.auth.authorized ?
 
                 <Redirect to='/analyze'/>
             :
                 <div className='cc-authForm'>
-                   <form className='cc-authForm__form' onSubmit={this.handleSubmit}>
-                    <h5 className='cc-authForm__title'>Sign Up</h5>
-                    <input type='text'
-                           id='nickname'
-                           placeholder='Nickname'
-                           className='cc-authForm__input'
-                           value={this.state.nickname}
-                           onChange={this.handleInputChange}/>
-                    <input type='email'
-                           id='email'
-                           placeholder='Email'
-                           className='cc-authForm__input'
-                           value={this.state.email}
-                           onChange={this.handleInputChange}/>
-                    <input type='password'
-                           id='password'
-                           placeholder='Password'
-                           className='cc-authForm__input'
-                           value={this.state.password}
-                           onChange={this.handleInputChange}/>
-                    <input type="submit" className='cc-authForm__input--submit-btn' value='Sign up'/>
-                </form>
+                    <form className='cc-authForm__form' onSubmit={this.handleSubmit}>
+                        <h5 className='cc-authForm__title'>Sign Up</h5>
+                        <input type='text'
+                               id='nickname'
+                               placeholder='Nickname'
+                               className='cc-authForm__input'
+                               value={this.state.nickname}
+                               onChange={this.handleInputChange}/>
+                        <input type='email'
+                               id='email'
+                               placeholder='Email'
+                               className='cc-authForm__input'
+                               value={this.state.email}
+                               onChange={this.handleInputChange}/>
+                        <input type='password'
+                               id='password'
+                               placeholder='Password'
+                               className='cc-authForm__input'
+                               value={this.state.password}
+                               onChange={this.handleInputChange}/>
+                        <input type="submit" className='cc-authForm__input--submit-btn' value='Sign up'/>
+                        <Link className='cc-authForm__link' to='/logIn'>Already have an account?</Link>
+                    </form>
                 </div>
         );
     }

@@ -1,6 +1,22 @@
-.cc-header__authorization{
-  width: 20%;
-  max-width: 200px;
-  height: 100%;
-  background-color: beige;
+.cc-authorization{
+  //display: flex;
+  //align-self: center;
+  //justify-self: center;
+  //background-color: #B400E9;
+
+  &__logOut{
+
+  }
+  &__link-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  &__link{
+    color: #7baac7;
+    font-family: sans-serif, Arial;
+  }
 }
+

@@ -15,7 +15,7 @@ class Router extends Component{
                     <Route path='/analyze'   component={GetNutrientsInfo}/>
                     <Route path='/statistic' component={Statistic}/>
                     <Route path='/about'     component={About}/>
-                    <Route path='/logIn'    component={LogInForm}/>
+                    <Route path='/logIn'     component={LogInForm}/>
                     <Route path='/signUp'    component={SignUpForm}/>
                 </Switch>
             </main>
