@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import { withRouter } from 'react-router-dom';
 
+import './statistic.scss';
+
 class Statistic extends Component{
     render() {
         return (
-            <div>some stats</div>
+            <div className='cc-statistic'>some stats</div>
         );
     }
 }

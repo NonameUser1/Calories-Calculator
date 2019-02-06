@@ -130,9 +130,6 @@ function mapStateToProps(state) {         // passing state from store to props o
         nutrients: state.nutrients
     }
 }
-//
-// function matchDispatchToProps(dispatch) {  // passing action to props?
-//     return bindActionCreators({searchFoodInfo: searchFoodInfo},dispatch)
-// }
+
 
 export default connect(mapStateToProps)(FoodInfo);
